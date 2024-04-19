@@ -17,36 +17,43 @@ function createGrid(size) {
 }
 
 function addHoverEffect() {
-    container.addEventListener('mouseover', function(e) {
-        if (e.target.classList.contains('square')) {
-            let currentColor = e.target.style.backgroundColor;
-            let currentOpacity = parseFloat(e.target.style.opacity) || 0;
-
-            if (currentColor === '' || currentOpacity < 1) {
-                currentOpacity += 0.1; 
-                e.target.style.backgroundColor = colorPicker.value;
-                e.target.style.opacity = currentOpacity;
-            }
-        }
-    });
+    container.addEventListener('mouseover', handleMouseOver);
 }
 
+function handleMouseOver(event) {
+    const square = event.target;
+
+    if (square.classList.contains('square')) {
+        let currentOpacity = parseFloat(square.style.opacity) || 0;
+
+        if (currentOpacity < 1) {
+            currentOpacity += 0.1; 
+            square.style.opacity = currentOpacity;
+            square.style.backgroundColor = colorPicker.value;
+        }
+    }
+}
 
 function clearGrid() {
     const squares = document.querySelectorAll('.square');
     squares.forEach(square => {
         square.style.backgroundColor = '#fff';
+        square.style.opacity = '';
     });
 }
 
-gridSizeInput.addEventListener('change', function() {
+function handleGridSizeChange() {
     gridSize = parseInt(gridSizeInput.value) || 16;
-    gridSizeInput.value = '';
-    if (gridSize > 100) gridSize = 100;
+    if (gridSize > 100) {
+        gridSize = 100;
+    }
+
     createGrid(gridSize);
     addHoverEffect();
-});
+    gridSizeInput.value = '';
+}
 
+gridSizeInput.addEventListener('change', handleGridSizeChange);
 clearButton.addEventListener('click', clearGrid);
 
 createGrid(gridSize);
