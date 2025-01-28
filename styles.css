@@ -42,6 +42,7 @@ body {
 #controls-box input[type="color"] {
     padding: 0;
     height: 40px;
+    width: 100%;
 }
 
 #controls-box button.active {
@@ -57,7 +58,7 @@ body {
 }
 
 #controls-box button:hover {
-    background-color: #ddd;
+    background-color: #66BB6A;
 }
 
 #controls-box button i {
@@ -72,16 +73,16 @@ body {
     text-align: center;
     font-size: 14px;
     color: #333;
-    width: 200px; /* Fixed width */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Add ellipsis for overflow text */
-    white-space: nowrap; /* Prevent text from wrapping */
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #container {
     display: grid;
-    width: 480px; /* Fixed width */
-    height: 480px; /* Fixed height */
+    width: 480px;
+    height: 480px;
     border: 1px solid #000;
     grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
@@ -92,7 +93,7 @@ body {
     height: 100%;
     background-color: #fff;
     border: 1px solid #ddd;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .grid-line {
